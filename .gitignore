@@ -1,0 +1,4 @@
+
+env_small_lms/
+language_models/__pycache__/__init__.cpython-310.pyc
+language_models/__pycache__/ft5_models.cpython-310.pyc
