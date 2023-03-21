@@ -11,7 +11,7 @@ models = {
     "Flan T5 large": "google/flan-t5-large",
     "Flan T5 xl": "google/flan-t5-xl", 
     "Flan T5 xxl": "google/flan-t5-xxl", 
-    "Flan ul xl": "google/flan-ul2", 
+    "Flan ul xl": "google/flan-ul2", # This has the receptive field of 2048
     "GPT-2": "gpt2",   
     "GPT-2 XL": "gpt2-xl",   
     "gpt-neo": "EleutherAI/gpt-neo-1.3B",
