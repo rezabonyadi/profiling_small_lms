@@ -4,7 +4,7 @@ from language_models import llama_models
 import time
 
 models_map = {
-            't5': ['google/flan-t5-small', 'google/flan-t5-base', 'google/flan-t5-large', 'google/flan-t5-xl'],
+            't5': ['google/flan-t5-small', 'google/flan-t5-base', 'google/flan-t5-large', 'google/flan-t5-xl', 'google/flan-t5-xxl', "google/flan-ul2"],
             'gpt': ['gpt2', 'gpt2-xl', 'EleutherAI/gpt-neo-1.3B'],
             'llama': ['llama']
         }
