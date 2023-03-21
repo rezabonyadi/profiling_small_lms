@@ -1,4 +1,5 @@
-# profiling_small_lms
+# Profiling small language models
  
  
-![2292cd79-a419-4dfb-9c03-23f1997ac547](https://user-images.githubusercontent.com/25924343/225982662-a829d335-5131-463d-a530-e4254af12330.jpg)
+ 
+ ![Screenshot 2023-03-21 114510](https://user-images.githubusercontent.com/25924343/226584058-76ed44a9-ad26-4429-ad3b-f8c892731053.png)
