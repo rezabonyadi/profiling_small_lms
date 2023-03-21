@@ -23,7 +23,6 @@ model_name = st.sidebar.selectbox("Select a model", list(models.keys()))
 max_in = st.sidebar.text_input("max input length", "512")
 max_out = st.sidebar.text_input("max output length", "64")
 temprature = st.sidebar.text_input("temprature", "0.7")
-
 device = st.sidebar.selectbox("Device", ['cpu', 'cuda:0'])
 
 # Create input fields for the context and task
@@ -38,7 +37,7 @@ if st.button("Submit"):
     settings = {'output_max_length': np.int32(max_out), 'input_max_length': np.int32(max_in), 
                 'device': device, 'temprature': float(temprature)}
     
-    runner.update_model(models[model_name], settings, settings['device'])   
+    runner.update_model(models[model_name], settings)   
 
     generated_outputs, time_spans = runner.generate(context, task)
     st.write("Response:", generated_outputs + '\n\n Time taken: ' + str(time_spans) + ' s')

@@ -11,10 +11,11 @@ import time
 # tokenizer = AutoTokenizer.from_pretrained(models[model_name])
 
 class gpt_models:
-    def __init__(self, model_name, settings, device='cpu'):
+    def __init__(self, model_name, settings):
         self.input_max_length = settings['input_max_length']
         self.output_max_length = settings['output_max_length']
         self.temperature = settings['temprature']
+        self.device = settings['device']
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForCausalLM.from_pretrained(model_name)
