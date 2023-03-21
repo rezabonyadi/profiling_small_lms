@@ -1,7 +1,10 @@
 numpy
 pandas
-transformers
 torch
 sentencepiece
 streamlit
 huggingface_hub
+loralib
+bitsandbytes
+git+https://github.com/zphang/transformers@c3dc391
+git+https://github.com/huggingface/peft.git

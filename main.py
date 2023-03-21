@@ -1,6 +1,6 @@
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from language_models import ft5_models
+from language_models.model_runner import model_runner
 
 import numpy as np
 
@@ -9,7 +9,13 @@ models = {
     "Flan T5 small": "google/flan-t5-small",
     "Flan T5 base": "google/flan-t5-base",
     "Flan T5 large": "google/flan-t5-large",
-    # "Flan T5 xl": "google/flan-t5-xl",    
+    "Flan T5 xl": "google/flan-t5-xl", 
+    "Flan T5 xxl": "google/flan-t5-xxl", 
+    "Flan ul xl": "google/flan-ul2", 
+    "GPT-2": "gpt2",   
+    "GPT-2 XL": "gpt2-xl",   
+    "gpt-neo": "EleutherAI/gpt-neo-1.3B",
+    "alpaca": "llama"    
 }
 
 # Create a dropdown to select the model
@@ -24,26 +30,15 @@ device = st.sidebar.selectbox("Device", ['cpu', 'cuda:0'])
 context = st.text_area("Context")
 task = st.text_input("Task")
 
-# # Load the tokenizer and model for the selected model
-# tokenizer = AutoTokenizer.from_pretrained(models[model_name])
-# model = AutoModelForSequenceClassification.from_pretrained(models[model_name])
+runner = model_runner()
 
 # Create a button to apply the task to the context using the selected model
 if st.button("Submit"):
-    data_task = context+'\n'+task    
+    # data_task = context+'\n'+task    
     settings = {'output_max_length': np.int32(max_out), 'input_max_length': np.int32(max_in), 
                 'device': device, 'temprature': float(temprature)}
+    
+    runner.update_model(models[model_name], settings, settings['device'])   
 
-    generated_outputs, time_spans = ft5_models.generate(models[model_name], data_task, settings, settings['device'])
-
-    # Tokenize the context and task
-    # inputs = tokenizer(context, task, return_tensors="pt")
-
-    # Apply the model to the inputs
-    # outputs = model(**inputs)
-
-    # Get the predicted label (assuming a binary classification task)
-    # label = "Positive" if outputs.logits.argmax().item() == 1 else "Negative"
-
-    # Show the predicted label
+    generated_outputs, time_spans = runner.generate(context, task)
     st.write("Response:", generated_outputs + '\n\n Time taken: ' + str(time_spans) + ' s')
