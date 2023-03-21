@@ -29,7 +29,10 @@ device = st.sidebar.selectbox("Device", ['cpu', 'cuda:0'])
 context = st.text_area("Context")
 task = st.text_input("Task")
 
-runner = model_runner()
+if 'model_runner' not in st.session_state:
+    st.session_state['model_runner'] = model_runner()
+
+runner = st.session_state['model_runner']
 
 # Create a button to apply the task to the context using the selected model
 if st.button("Submit"):
